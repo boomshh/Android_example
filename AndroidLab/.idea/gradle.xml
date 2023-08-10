@@ -15,6 +15,9 @@
             <option value="$PROJECT_DIR$/c13" />
             <option value="$PROJECT_DIR$/c14" />
             <option value="$PROJECT_DIR$/c15" />
+            <option value="$PROJECT_DIR$/c16" />
+            <option value="$PROJECT_DIR$/c17" />
+            <option value="$PROJECT_DIR$/constraint" />
           </set>
         </option>
       </GradleProjectSettings>
