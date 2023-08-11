@@ -17,8 +17,10 @@
             <option value="$PROJECT_DIR$/c15" />
             <option value="$PROJECT_DIR$/c16" />
             <option value="$PROJECT_DIR$/c17" />
+            <option value="$PROJECT_DIR$/clickevent" />
             <option value="$PROJECT_DIR$/constraint" />
             <option value="$PROJECT_DIR$/keyevent" />
+            <option value="$PROJECT_DIR$/touchevent" />
           </set>
         </option>
       </GradleProjectSettings>
