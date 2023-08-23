@@ -16,3 +16,4 @@ rootProject.name = "ViewBinding"
 include ':app'
 include ':grid'
 include ':recyclerview'
+include ':recyclerview2'

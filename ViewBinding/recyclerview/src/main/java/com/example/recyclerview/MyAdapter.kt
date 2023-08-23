@@ -7,37 +7,43 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
+import com.example.recyclerview.databinding.ActivityMainBinding
+import com.example.recyclerview.databinding.ItemBinding
 
-class MyAdapter(val mContext: Context, val mItems: MutableList<MyItem>): BaseAdapter() {
+class MyAdapter(val mItems: MutableList<MyItem>) : RecyclerView.Adapter<MyAdapter.Holder>() {
 
-    override fun getCount(): Int {
-        return mItems.size
+    interface ItemClick {
+        fun onClick(view : View, position : Int)
     }
 
-    override fun getItem(position:Int) : Any {
-        return mItems[position]
+    var itemClick : ItemClick? = null
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
+        val binding = ItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return Holder(binding)
+    }
+
+    override fun onBindViewHolder(holder: Holder, position: Int) {
+        holder.itemView.setOnClickListener {  //클릭이벤트추가부분
+            itemClick?.onClick(it, position)
+        }
+        holder.iconImageView.setImageResource(mItems[position].aIcon)
+        holder.name.text = mItems[position].aName
+        holder.age.text = mItems[position].aAge
     }
 
     override fun getItemId(position: Int): Long {
         return position.toLong()
     }
 
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
+    override fun getItemCount(): Int {
+        return mItems.size
+    }
 
-        var convertView = convertView
-        if (convertView == null) convertView = LayoutInflater.from(parent?.context).inflate(R.layout.item, parent, false)
-
-        val item : MyItem = mItems[position]
-
-        val iconImageView = convertView?.findViewById<View>(R.id.iconItem) as ImageView
-        val tv_name = convertView.findViewById<View>(R.id.textItem1) as TextView
-        val tv_age = convertView.findViewById<View>(R.id.textItem2) as TextView
-
-        iconImageView.setImageResource(item.aIcon)
-        tv_name.text = item.aName
-        tv_age.text = item.aAge
-
-        return convertView
-
+    inner class Holder(val binding: ItemBinding) : RecyclerView.ViewHolder(binding.root) {
+        val iconImageView = binding.iconItem
+        val name = binding.textItem1
+        val age = binding.textItem2
     }
 }

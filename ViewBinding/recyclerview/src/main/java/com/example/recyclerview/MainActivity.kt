@@ -2,6 +2,9 @@ package com.example.recyclerview
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.recyclerview.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -14,6 +17,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // 데이터 원본 준비
         val dataList = mutableListOf<MyItem>()
         dataList.add(MyItem(R.drawable.ex1, "Bella", "1"))
         dataList.add(MyItem(R.drawable.ex2, "Charlie", "2"))
@@ -23,8 +27,22 @@ class MainActivity : AppCompatActivity() {
         dataList.add(MyItem(R.drawable.ex6, "Happy", "4"))
         dataList.add(MyItem(R.drawable.ex7, "Luna", "3"))
         dataList.add(MyItem(R.drawable.ex8, "Bob", "2"))
+        dataList.add(MyItem(R.drawable.ex1, "Bob", "2"))
+        dataList.add(MyItem(R.drawable.ex2, "Bob", "2"))
+        dataList.add(MyItem(R.drawable.ex3, "Bob", "2"))
 
-        binding.custom.adapter = MyAdapter(this, dataList)
+        binding.recycler.adapter = MyAdapter(dataList)
+
+        val adapter = MyAdapter(dataList)
+        binding.recycler.adapter = adapter
+        binding.recycler.layoutManager = LinearLayoutManager(this)
+
+        adapter.itemClick = object : MyAdapter.ItemClick {
+            override fun onClick(view: View, position: Int) {
+                val name: String = dataList[position].aName
+                Toast.makeText(this@MainActivity," $name 선택!", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 }
 
