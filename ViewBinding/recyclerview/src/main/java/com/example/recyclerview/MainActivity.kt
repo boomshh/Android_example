@@ -37,12 +37,7 @@ class MainActivity : AppCompatActivity() {
         binding.recycler.adapter = adapter
         binding.recycler.layoutManager = LinearLayoutManager(this)
 
-        adapter.itemClick = object : MyAdapter.ItemClick {
-            override fun onClick(view: View, position: Int) {
-                val name: String = dataList[position].aName
-                Toast.makeText(this@MainActivity," $name 선택!", Toast.LENGTH_SHORT).show()
-            }
-        }
+
     }
 }
 
