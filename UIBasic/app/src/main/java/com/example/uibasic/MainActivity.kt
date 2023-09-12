@@ -11,10 +11,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.text_views)
 
-//        fun doAction(v:View) {
-//            Toast.makeText(getApplicationContext(), "Submitted Successfully",
-//                Toast.LENGTH_SHORT).show();
-//        }
+//       fun doAction(v:View) {
+//           Toast.makeText(getApplicationContext(), "Submitted Successfully",
+//               Toast.LENGTH_SHORT).show();
+//       }
 
         val btn = findViewById<Button>(R.id.submit_button)
 
