@@ -16,3 +16,4 @@ rootProject.name = "save"
 include ':app'
 include ':database'
 include ':shared'
+include ':settingsxml'
