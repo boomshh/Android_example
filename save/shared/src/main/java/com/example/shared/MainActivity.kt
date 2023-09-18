@@ -3,6 +3,7 @@ package com.example.shared
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.example.shared.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -19,6 +20,7 @@ class MainActivity : AppCompatActivity() {
                 putString("data1", binding.edit.text.toString())
                 putBoolean("data2", binding.check.isChecked)
                 commit()
+                Toast.makeText(binding.root.context, "data saved", Toast.LENGTH_SHORT).show()
             }
         }
         binding.get.setOnClickListener {
